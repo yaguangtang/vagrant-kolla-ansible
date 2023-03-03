@@ -409,7 +409,7 @@
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Busy System",
+          "legendFormat": "VM CPU load",
           "range": true,
           "refId": "A",
           "step": 240
@@ -2008,14 +2008,17 @@
   "refresh": "10s",
   "schemaVersion": 37,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "libvirt",
+    "instance"
+  ],
   "templating": {
     "list": [
       {
         "current": {
           "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "text": "192.168.122.127",
+          "value": "192.168.122.127"
         },
         "datasource": {
           "type": "prometheus",
@@ -2043,8 +2046,8 @@
       {
         "current": {
           "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "text": "instance-00000001",
+          "value": "instance-00000001"
         },
         "datasource": {
           "type": "prometheus",
@@ -2071,7 +2074,6 @@
       },
       {
         "current": {
-          "isNone": true,
           "selected": false,
           "text": "None",
           "value": ""
@@ -2108,7 +2110,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Libvirt",
-  "uid": "1sr_0CJGz",
-  "version": 8,
+  "uid": "libvirt-exporter",
+  "version": 3,
   "weekStart": ""
 }
