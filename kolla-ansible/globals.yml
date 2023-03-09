@@ -1,4 +1,5 @@
 ---
+enable_mistral: yes
 enable_grafana: yes
 enable_prometheus: yes
 kolla_base_distro: "ubuntu"
