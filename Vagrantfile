@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
     t.vm.network "private_network", ip: "192.168.56.11"
     t.vm.network "private_network", ip: "192.168.57.11"
     t.vm.provider "virtualbox" do |vb|
-      vb.name = "compute-02"
+      vb.name = "compute-01"
       vb.gui = false
       vb.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
       vb.memory = "16384"
