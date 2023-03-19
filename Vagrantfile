@@ -1,15 +1,23 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/jammy64"
+  config.vm.provision "shell", inline: <<-SHELL
+    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+    sed -i 's/PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+    systemctl restart sshd
+    echo -e "vagrant\nvagrant" | (passwd vagrant)
+    echo -e "root\nroot" | (passwd root)
+  SHELL
+
  
 # region one controller node
-  config.vm.define "controller1" do |t|
-    t.vm.hostname = "controller1"
+  config.vm.define "controller-01" do |t|
+    t.vm.hostname = "controller-01"
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
     t.vm.network "private_network", ip: "192.168.56.10"
     t.vm.network "private_network", ip: "192.168.57.10"
     t.vm.provider "virtualbox" do |vb|
-      vb.name = "controller1"
+      vb.name = "controller-01"
       vb.gui = false
       vb.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
       vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
@@ -55,14 +63,14 @@ Vagrant.configure("2") do |config|
   end
 
 # region two controller node
-  config.vm.define "controller2" do |t|
-    t.vm.hostname = "controller2"
+  config.vm.define "controller-02" do |t|
+    t.vm.hostname = "controller-02"
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
     t.vm.network "private_network", ip: "192.168.56.20"
     t.vm.network "private_network", ip: "192.168.57.20"
     t.vm.provider "virtualbox" do |vb|
-      vb.name = "controller2"
+      vb.name = "controller-02"
       vb.gui = false
       vb.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
       vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
