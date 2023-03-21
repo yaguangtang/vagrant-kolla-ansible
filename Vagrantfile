@@ -84,8 +84,8 @@ Vagrant.configure("2") do |config|
     t.vm.hostname = "compute-03"
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
-    t.vm.network "private_network", ip: "192.168.56.22"
-    t.vm.network "private_network", ip: "192.168.57.22"
+    t.vm.network "private_network", ip: "192.168.56.21"
+    t.vm.network "private_network", ip: "192.168.57.21"
     t.vm.provider "virtualbox" do |vb|
       vb.name = "compute-03"
       vb.gui = false
