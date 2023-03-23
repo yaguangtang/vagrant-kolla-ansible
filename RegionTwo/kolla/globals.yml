@@ -30,8 +30,11 @@ prometheus_libvirt_exporter_interval: "60s"
 #multi region settings
 openstack_region_name: "RegionTwo"
 
+keystone_internal_url: "192.168.56.100:35357"
+keystone_admin_url: "192.168.56.100:35357"
+
 openstack_auth:
-    auth_url: "192.168.56.10"
+    auth_url: "192.168.56.100:35357"
     username: "{{ keystone_admin_user }}"
     password: "{{ keystone_admin_password }}"
     user_domain_name: "{{ default_user_domain_name }}"
