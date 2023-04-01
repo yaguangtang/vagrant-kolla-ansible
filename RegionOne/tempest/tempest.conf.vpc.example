@@ -1,0 +1,74 @@
+[auth]
+create_isolated_networks = true
+admin_username = admin
+admin_project_name = admin
+admin_password = FzA2cOQMXv0shkkw38aEWp93qCDWE7PGS7YYB5zF
+admin_domain_name = Default
+
+[identity]
+disable_ssl_certificate_validation = True
+# uri can be http or https
+uri = https://192.168.56.100:35357
+uri_v3 =https://192.168.56.100:35357/v3/
+region = RegionOne
+
+[service_available]
+neutron = true
+glance = true
+nova = true
+cinder = true
+horizon = false
+swift = false
+ceilometer=false
+
+[compute]
+# we can use the small cirros image for test
+image_ref= e9a0b62b-b208-441f-a60e-8b9ee0e5ef73
+image_ref_alt = e9a0b62b-b208-441f-a60e-8b9ee0e5ef73
+
+flavor_ref = 1
+region = RegionOne
+
+[network]
+# use your env public network id 
+public_network_id = d48496ae-bf23-40a9-8dea-705616f0743e 
+floating_network_name=public1
+region = RegionOne
+
+[image]
+endpoint_type = internalURL
+region = RegionOne
+
+[volume]
+endpoint_type = internalURL
+build_timeout = 200
+region = RegionOne
+
+[validation]
+run_validation = true
+# if use vpc network, then we may need floating ip to connect to VM
+connect_method = floating
+image_ssh_user = cirros
+image_ssh_password = gocubsgo
+
+[compute-feature-enabled]
+change_password = False
+console_output = True
+resize = True
+pause = false
+shelve = false
+suspend = false
+live_migration = true
+rescue = false
+enable_instance_password = True
+interface_attach = true
+snapshot = True
+
+[network-feature-enabled]
+ipv6 = false
+floating_ips = true
+api_extensions = agent,allowed-address-pairs,binding,external-net,provider,router,security-group,service-type,subnet_allocation
+
+[volume-feature-enabled]
+backup = True
+multi_backend = False
