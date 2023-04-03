@@ -65,7 +65,7 @@ interface_attach = true
 snapshot = True
 
 [network-feature-enabled]
-ipv6 = false
+ipv6 = true
 floating_ips = true
 api_extensions = agent,allowed-address-pairs,binding,external-net,provider,router,security-group,service-type,subnet_allocation
 
