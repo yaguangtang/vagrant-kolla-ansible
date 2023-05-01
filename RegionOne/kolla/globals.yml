@@ -3,6 +3,7 @@ enable_mistral: yes
 enable_grafana: yes
 enable_cinder: "yes"
 #enable_ironic: "yes"
+enable_neutron_qos: "yes"
 
 enable_prometheus: yes
 kolla_base_distro: "ubuntu"
