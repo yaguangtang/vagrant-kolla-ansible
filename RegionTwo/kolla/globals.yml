@@ -23,7 +23,13 @@ neutron_external_interface: "enp0s9"
 kolla_external_vip_interface: "enp0s10"
 
 enable_neutron_provider_networks: "yes"
-#ironic_dnsmasq_dhcp_range: "192.168.56.200,192.168.56.210"
+
+#baremetal service config
+ironic_dnsmasq_dhcp_range: "192.168.56.110,192.168.56.120"
+ironic_dnsmasq_interface: "enp0s8"
+ironic_cleaning_network: "public1"
+ironic_inspector_kernel_cmdline_extras: ['ipa-lldp-timeout=90.0', 'ipa-collect-lldp=1']
+ironic_enable_keystone_integration: "yes"
 
 glance_backend_ceph: "yes"
 cinder_backend_ceph: "yes"
