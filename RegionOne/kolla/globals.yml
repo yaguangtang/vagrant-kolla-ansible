@@ -4,6 +4,7 @@ enable_grafana: yes
 enable_cinder: "yes"
 #enable_ironic: "yes"
 enable_neutron_qos: "yes"
+enable_barbican: "yes"
 
 enable_prometheus: yes
 kolla_base_distro: "ubuntu"
