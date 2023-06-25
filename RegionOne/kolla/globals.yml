@@ -32,6 +32,7 @@ ironic_dnsmasq_interface: "enp0s8"
 ironic_cleaning_network: "public1"
 ironic_inspector_kernel_cmdline_extras: ['ipa-lldp-timeout=90.0', 'ipa-collect-lldp=1']
 ironic_enable_keystone_integration: "yes"
+enable_nova_serialconsole_proxy: "yes"
 
 glance_backend_ceph: "yes"
 cinder_backend_ceph: "yes"
