@@ -35,3 +35,4 @@ for snapshot in snapshots:
     # You can also access other attributes of the snapshot, such as status, created_at, etc.
     print('Snapshot Status: {}'.format(snapshot.status))
     print('Snapshot Created At: {}'.format(snapshot.created_at))
+    print('Snapshot Size: {} GB'.format(snapshot.size))
