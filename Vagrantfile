@@ -69,7 +69,7 @@ Vagrant.configure("2") do |config|
     t.vm.hostname = "controller-02"
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
-    t.vm.network "private_network", ip: "192.168.56.20"
+    t.vm.network "public_network", ip: "192.168.56.20", bridge: "eno2"
     t.vm.network "public_network", bridge: "eno1", auto_config: false
     t.vm.network "public_network", ip: "78.41.207.232", bridge: "eno1"
     t.vm.provider "virtualbox" do |vb|
