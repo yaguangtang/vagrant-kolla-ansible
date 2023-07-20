@@ -10,12 +10,13 @@ Vagrant.configure("2") do |config|
 
  
 # region one controller node
+# eno1 is public nic of physical server, eno2 is internal nic connect to baremetal ipmi
   config.vm.define "controller-01" do |t|
     t.vm.hostname = "controller-01"
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
-    t.vm.network "private_network", ip: "192.168.56.10"
-    t.vm.network "private_network", ip: "192.168.57.10"
+    t.vm.network "public_network", ip: "192.168.56.10", bridge: "eno2"
+    t.vm.network "public_network", bridge: "eno1", auto_config: false
     t.vm.network "public_network", ip: "78.41.207.231", bridge: "eno1"
     t.vm.provider "virtualbox" do |vb|
       vb.name = "controller-01"
@@ -33,8 +34,8 @@ Vagrant.configure("2") do |config|
     t.vm.hostname = "compute-01"
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
-    t.vm.network "private_network", ip: "192.168.56.11"
-    t.vm.network "private_network", ip: "192.168.57.11"
+    t.vm.network "public_network", ip: "192.168.56.11", bridge: "eno2"
+    t.vm.network "public_network", bridge: "eno1", auto_config: false
     t.vm.provider "virtualbox" do |vb|
       vb.name = "compute-01"
       vb.gui = false
@@ -50,8 +51,8 @@ Vagrant.configure("2") do |config|
     t.vm.hostname = "compute-02"
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
-    t.vm.network "private_network", ip: "192.168.56.12"
-    t.vm.network "private_network", ip: "192.168.57.12"
+    t.vm.network "public_network", ip: "192.168.56.12", bridge: "eno2"
+    t.vm.network "public_network", bridge: "eno1", auto_config: false
     t.vm.provider "virtualbox" do |vb|
       vb.name = "compute-02"
       vb.gui = false
@@ -69,7 +70,7 @@ Vagrant.configure("2") do |config|
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
     t.vm.network "private_network", ip: "192.168.56.20"
-    t.vm.network "private_network", ip: "192.168.57.20"
+    t.vm.network "public_network", bridge: "eno1", auto_config: false
     t.vm.network "public_network", ip: "78.41.207.232", bridge: "eno1"
     t.vm.provider "virtualbox" do |vb|
       vb.name = "controller-02"
@@ -86,8 +87,8 @@ Vagrant.configure("2") do |config|
     t.vm.hostname = "compute-03"
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
-    t.vm.network "private_network", ip: "192.168.56.21"
-    t.vm.network "private_network", ip: "192.168.57.21"
+    t.vm.network "public_network", ip: "192.168.56.21", bridge: "eno2"
+    t.vm.network "public_network", bridge: "eno1", auto_config: false
     t.vm.provider "virtualbox" do |vb|
       vb.name = "compute-03"
       vb.gui = false
@@ -102,8 +103,8 @@ Vagrant.configure("2") do |config|
     t.vm.hostname = "compute-04"
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
-    t.vm.network "private_network", ip: "192.168.56.22"
-    t.vm.network "private_network", ip: "192.168.57.22"
+    t.vm.network "public_network", ip: "192.168.56.22", bridge: "eno2"
+    t.vm.network "public_network", bridge: "eno1", auto_config: false
     t.vm.provider "virtualbox" do |vb|
       vb.name = "compute-04"
       vb.gui = false
