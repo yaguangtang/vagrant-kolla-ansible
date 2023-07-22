@@ -6,6 +6,8 @@ Vagrant.configure("2") do |config|
     systemctl restart sshd
     echo -e "strongpassword\nstrongpassword" | (passwd vagrant)
     echo -e "strongpassword\nstrongpassword" | (passwd root)
+    ip r del 0.0.0.0/0 via 10.0.2.2
+    ip r add 0.0.0.0/0 via 78.41.207.1
   SHELL
 
  
