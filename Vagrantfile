@@ -6,14 +6,16 @@ Vagrant.configure("2") do |config|
     systemctl restart sshd
     echo -e "strongpassword\nstrongpassword" | (passwd vagrant)
     echo -e "strongpassword\nstrongpassword" | (passwd root)
-    ip r del 0.0.0.0/0 via 10.0.2.2
-    ip r add 0.0.0.0/0 via 78.41.207.1
   SHELL
 
  
 # region one controller node
 # eno1 is public nic of physical server, eno2 is internal nic connect to baremetal ipmi
   config.vm.define "controller-01" do |t|
+    t.vm.provision "shell", inline: <<-SHELL
+      sleep 5 && ip r del 0.0.0.0/0 via 10.0.2.2
+      ip r add 0.0.0.0/0 via 78.41.207.1
+  SHELL
     t.vm.hostname = "controller-01"
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
@@ -68,6 +70,10 @@ Vagrant.configure("2") do |config|
 
 # region two controller node
   config.vm.define "controller-02" do |t|
+    t.vm.provision "shell", inline: <<-SHELL
+      sleep 5 && ip r del 0.0.0.0/0 via 10.0.2.2
+      ip r add 0.0.0.0/0 via 78.41.207.1
+  SHELL
     t.vm.hostname = "controller-02"
     t.vm.disk :disk, size: "100GB", primary: true
     t.vm.disk :disk, size: "100GB", name: "ceph"
