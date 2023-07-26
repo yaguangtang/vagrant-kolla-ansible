@@ -18,10 +18,11 @@ kolla_external_vip_address: "78.41.207.63"
 network_interface: "enp0s8"
 
 #vm public traffic nic, for provider network
-neutron_external_interface: "enp0s9"
+neutron_external_interface: "enp0s9,enp0s10"
+neutron_bridge_name: "br-ex1,br-ex2"
 
 #public dashboard vip nic
-kolla_external_vip_interface: "enp0s10"
+kolla_external_vip_interface: "enp0s16"
 
 enable_neutron_provider_networks: "yes"
 
