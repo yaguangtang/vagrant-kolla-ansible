@@ -80,9 +80,9 @@ Vagrant.configure("2") do |config|
     #openstack service mgmt network nic,enp0s8
     t.vm.network "public_network", ip: "192.168.56.20", bridge: "eno2"
     # used for provider network nic,enp0s9
-    t.vm.network "public_network", bridge: "eno1", auto_config: false
+    t.vm.network "public_network", bridge: "eno1", ip: "0.0.0.0", netmask: "255.255.255.255"
     # used for provider network nic,enp0s10
-    t.vm.network "public_network", bridge: "eno1", auto_config: false
+    t.vm.network "public_network", bridge: "eno1", ip: "0.0.0.0", netmask: "255.255.255.255"
     # used for controller public service api endpoint, enp0s16
     t.vm.network "public_network", ip: "78.41.207.232", bridge: "eno1"
     t.vm.provider "virtualbox" do |vb|
@@ -103,9 +103,9 @@ Vagrant.configure("2") do |config|
     t.vm.disk :disk, size: "100GB", name: "ceph"
     t.vm.network "public_network", ip: "192.168.56.21", bridge: "eno2"
     # used for provider network nic,enp0s9
-    t.vm.network "public_network", bridge: "eno1", auto_config: false
+    t.vm.network "public_network", bridge: "eno1", ip: "0.0.0.0", netmask: "255.255.255.255"
     # used for provider network nic,enp0s10
-    t.vm.network "public_network", bridge: "eno1", auto_config: false
+    t.vm.network "public_network", bridge: "eno1", ip: "0.0.0.0", netmask: "255.255.255.255"
     t.vm.provider "virtualbox" do |vb|
       vb.name = "compute-03"
       vb.gui = false
@@ -123,9 +123,9 @@ Vagrant.configure("2") do |config|
     t.vm.disk :disk, size: "100GB", name: "ceph"
     t.vm.network "public_network", ip: "192.168.56.22", bridge: "eno2"
     # used for provider network nic,enp0s9
-    t.vm.network "public_network", bridge: "eno1", auto_config: false
+    t.vm.network "public_network", bridge: "eno1", ip: "0.0.0.0", netmask: "255.255.255.255"
     # used for provider network nic,enp0s10
-    t.vm.network "public_network", bridge: "eno1", auto_config: false
+    t.vm.network "public_network", bridge: "eno1", ip: "0.0.0.0", netmask: "255.255.255.255"
     t.vm.provider "virtualbox" do |vb|
       vb.name = "compute-04"
       vb.gui = false
